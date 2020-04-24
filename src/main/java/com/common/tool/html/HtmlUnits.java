@@ -1,5 +1,6 @@
 package com.common.tool.html;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
@@ -434,5 +435,19 @@ public class HtmlUnits {
 		return true;
 	}
 
+	/**
+	 * judge whether a text is a legal format of JSON
+	 */
+	public static boolean isJson(String text) {
+		if(StringUtils.isBlank(text)){
+			return false;
+		}
+		try {
+			JSON.parse(text);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 
 }
